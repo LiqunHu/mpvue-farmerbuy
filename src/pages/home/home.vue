@@ -6,7 +6,7 @@
           <image class="slide-image" :src="'https://gw.alicdn.com/tfs/' + item.smallPicUrl" mode="aspectFill"/>
         </swiper-item>
       </swiper>
-      <showlist :hotLists="hotLists"></showlist>
+      <showlist :showlists="showlists"></showlist>
     </section>
     <!-- <section  v-show="!selnav"  class="content">
       <coming :comingLists="comingLists" ></coming>
@@ -24,11 +24,11 @@
 </template>
 
 <script>
-import { showlist } from '@/components'
+import showlist from '@/components/home/showlist'
 export default {
   data() {
     return {
-      movies: [],
+      showlists: [],
       imgs: []
     }
   },
@@ -44,12 +44,23 @@ export default {
       } catch (error) {
         console.error(error)
       }
+    },
+    async getShowLists() {
+      let _self = this
+      try {
+        let response = await _self.$http.get(`/movie/coming/?limit=20&offset=0`)
+        _self.showlists = response.data.data.returnValue
+        console.log(_self.showlists)
+      } catch (error) {
+        console.error(error)
+      }
     }
   },
   created() {
     let _self = this
     try {
       _self.getSwiper()
+      _self.getShowLists()
     } catch (error) {
       console.error(error)
     }
