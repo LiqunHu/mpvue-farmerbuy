@@ -45,8 +45,8 @@ figcaption,
 aside,
 article {
     display: block;
-    margin: 0px;
-    padding: 0px;
+    margin: 0rpx;
+    padding: 0rpx;
 }
 table {
     border-collapse: collapse;
@@ -100,19 +100,19 @@ a {
 }
 /*文字排版、颜色*/
 .f12 {
-    font-size: 12px;
+    font-size: 12rpx;
 }
 .f13 {
-    font-size: 13px;
+    font-size: 13rpx;
 }
 .f14 {
-    font-size: 14px;
+    font-size: 14rpx;
 }
 .f16 {
-    font-size: 16px;
+    font-size: 16rpx;
 }
 .f20 {
-    font-size: 20px;
+    font-size: 20rpx;
 }
 .fb {
     font-weight: bold;
@@ -216,179 +216,179 @@ a.gray {
 }
 /*长度高度*/
 .w10 {
-    width: 10px;
+    width: 10rpx;
 }
 .w20 {
-    width: 20px;
+    width: 20rpx;
 }
 .w50 {
-    width: 50px;
+    width: 50rpx;
 }
 .w90 {
-    width: 90px;
+    width: 90rpx;
 }
 .w100 {
-    width: 100px;
+    width: 100rpx;
 }
 .w200 {
-    width: 200px;
+    width: 200rpx;
 }
 .w250 {
-    width: 250px;
+    width: 250rpx;
 }
 .w500 {
-    width: 500px;
+    width: 500rpx;
 }
 .w800 {
-    width: 800px;
+    width: 800rpx;
 }
 .w {
     width: 100%;
 }
 .h50 {
-    height: 50px;
+    height: 50rpx;
 }
 .h80 {
-    height: 80px;
+    height: 80rpx;
 }
 .h100 {
-    height: 100px;
+    height: 100rpx;
 }
 .h200 {
-    height: 200px;
+    height: 200rpx;
 }
 .h {
     height: 100%;
 }
 /*边距*/
 .m10 {
-    margin: 10px;
+    margin: 10rpx;
 }
 .m15 {
-    margin: 15px;
+    margin: 15rpx;
 }
 .m30 {
-    margin: 30px;
+    margin: 30rpx;
 }
 .mt5 {
-    margin-top: 5px;
+    margin-top: 5rpx;
 }
 .mt10 {
-    margin-top: 10px;
+    margin-top: 10rpx;
 }
 .mt15 {
-    margin-top: 15px;
+    margin-top: 15rpx;
 }
 .mt50 {
-    margin-top: 50px;
+    margin-top: 50rpx;
 }
 .mt100 {
-    margin-top: 100px;
+    margin-top: 100rpx;
 }
 .mb5 {
-    margin-bottom: 5px;
+    margin-bottom: 5rpx;
 }
 .mb10 {
-    margin-bottom: 10px;
+    margin-bottom: 10rpx;
 }
 .mb15 {
-    margin-bottom: 15px;
+    margin-bottom: 15rpx;
 }
 .mb100 {
-    margin-bottom: 100px;
+    margin-bottom: 100rpx;
 }
 .ml5 {
-    margin-left: 5px;
+    margin-left: 5rpx;
 }
 .ml10 {
-    margin-left: 10px;
+    margin-left: 10rpx;
 }
 .ml15 {
-    margin-left: 15px;
+    margin-left: 15rpx;
 }
 .ml20 {
-    margin-left: 20px;
+    margin-left: 20rpx;
 }
 .ml30 {
-    margin-left: 30px;
+    margin-left: 30rpx;
 }
 .ml50 {
-    margin-left: 50px;
+    margin-left: 50rpx;
 }
 .ml100 {
-    margin-left: 100px;
+    margin-left: 100rpx;
 }
 .mr5 {
-    margin-right: 5px;
+    margin-right: 5rpx;
 }
 .mr10 {
-    margin-right: 10px;
+    margin-right: 10rpx;
 }
 .mr15 {
-    margin-right: 15px;
+    margin-right: 15rpx;
 }
 .mr50 {
-    margin-right: 50px;
+    margin-right: 50rpx;
 }
 .mr100 {
-    margin-right: 100px;
+    margin-right: 100rpx;
 }
 .p10 {
-    padding: 10px;
+    padding: 10rpx;
 }
 .p15 {
-    padding: 15px;
+    padding: 15rpx;
 }
 .p30 {
-    padding: 30px;
+    padding: 30rpx;
 }
 .pt5 {
-    padding-top: 5px;
+    padding-top: 5rpx;
 }
 .pt10 {
-    padding-top: 10px;
+    padding-top: 10rpx;
 }
 .pt15 {
-    padding-top: 15px;
+    padding-top: 15rpx;
 }
 .pt20 {
-    padding-top: 20px;
+    padding-top: 20rpx;
 }
 .pt30 {
-    padding-top: 30px;
+    padding-top: 30rpx;
 }
 .pt50 {
-    padding-top: 50px;
+    padding-top: 50rpx;
 }
 .pb5 {
-    padding-bottom: 5px;
+    padding-bottom: 5rpx;
 }
 .pb100 {
-    padding-bottom: 100px;
+    padding-bottom: 100rpx;
 }
 .pl5 {
-    padding-left: 5px;
+    padding-left: 5rpx;
 }
 .pl10 {
-    padding-left: 10px;
+    padding-left: 10rpx;
 }
 .pl50 {
-    padding-left: 50px;
+    padding-left: 50rpx;
 }
 .pl100 {
-    padding-left: 100px;
+    padding-left: 100rpx;
 }
 .pr5 {
-    padding-right: 5px;
+    padding-right: 5rpx;
 }
 .pr10 {
-    padding-right: 10px;
+    padding-right: 10rpx;
 }
 .pr15 {
-    padding-right: 15px;
+    padding-right: 15rpx;
 }
 .pr100 {
-    padding-right: 100px;
+    padding-right: 100rpx;
 }
 /*遮罩*/
 .mask {
@@ -399,15 +399,15 @@ a.gray {
     top: 0;
     z-index: 999999;
 }
-/*1px;解决方案*/
+/*1rpx;解决方案*/
 .border-radius {
-    border-radius: 8px;
-    border: 1px solid #d9d9d9;
+    border-radius: 8rpx;
+    border: 1rpx solid #d9d9d9;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
     .border-radius {
-        border: 0px;
-        border-radius: 0px;
+        border: 0rpx;
+        border-radius: 0rpx;
         position: relative;
     }
     .border-radius:before {
@@ -419,8 +419,8 @@ a.gray {
         height: 200%;
         left: 0;
         top: 0;
-        border-radius: 8px;
-        border: 1px solid #d9d9d9;
+        border-radius: 8rpx;
+        border: 1rpx solid #d9d9d9;
         -webkit-transform: scale(0.5);
         -webkit-transform-origin: 0 0;
         transform: scale(0.5);
@@ -428,11 +428,11 @@ a.gray {
     }
 }
 .border-top {
-    border-top: 1px solid #d9d9d9;
+    border-top: 1rpx solid #d9d9d9;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
     .border-top {
-        border-top: 0px;
+        border-top: 0rpx;
         position: relative;
     }
     .border-top:before {
@@ -444,7 +444,7 @@ a.gray {
         height: 200%;
         left: 0;
         top: 0;
-        border-top: 1px solid #d9d9d9;
+        border-top: 1rpx solid #d9d9d9;
         -webkit-transform: scale(0.5);
         -webkit-transform-origin: 0 0;
         transform: scale(0.5);
@@ -452,11 +452,11 @@ a.gray {
     }
 }
 .border-bottom {
-    border-bottom: 1px solid #d9d9d9;
+    border-bottom: 1rpx solid #d9d9d9;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
     .border-bottom {
-        border-bottom: 0px;
+        border-bottom: 0rpx;
         position: relative;
     }
     .border-bottom:before {
@@ -468,7 +468,7 @@ a.gray {
         height: 200%;
         left: 0;
         top: 0;
-        border-bottom: 1px solid #d9d9d9;
+        border-bottom: 1rpx solid #d9d9d9;
         -webkit-transform: scale(0.5);
         -webkit-transform-origin: 0 0;
         transform: scale(0.5);
@@ -476,11 +476,11 @@ a.gray {
     }
 }
 .border-right {
-    border-right: 1px solid #d9d9d9;
+    border-right: 1rpx solid #d9d9d9;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
     .border-right {
-        border-right: 0px;
+        border-right: 0rpx;
         position: relative;
     }
     .border-right:before {
@@ -492,74 +492,74 @@ a.gray {
         height: 200%;
         left: 0;
         top: 0;
-        border-right: 1px solid #d9d9d9;
+        border-right: 1rpx solid #d9d9d9;
         -webkit-transform: scale(0.5);
         -webkit-transform-origin: 0 0;
         transform: scale(0.5);
         transform-origin: 0 0;
     }
 }
-/*mint 1px*/ 
-.mint-1px-t {
+/*mint 1rpx*/ 
+.mint-1rpx-t {
     background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 100%);
     background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 100%);
-    background-size: 100% 1px;
+    background-size: 100% 1rpx;
     background-repeat: no-repeat;
     background-position: top;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    .mint-1px-t {
+    .mint-1rpx-t {
         background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
         background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
-        background-size: 100% 1px;
+        background-size: 100% 1rpx;
         background-repeat: no-repeat;
         background-position: top;
     }
 }
-.mint-1px-b {
+.mint-1rpx-b {
     background-image: -webkit-linear-gradient(bottom, #d9d9d9, #d9d9d9 100%);
     background-image: linear-gradient(0deg, #d9d9d9, #d9d9d9 100%);
-    background-size: 100% 1px;
+    background-size: 100% 1rpx;
     background-repeat: no-repeat;
     background-position: bottom;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    .mint-1px-b {
+    .mint-1rpx-b {
         background-image: -webkit-linear-gradient(bottom, #d9d9d9, #d9d9d9 50%, transparent 50%);
         background-image: linear-gradient(0deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
-        background-size: 100% 1px;
+        background-size: 100% 1rpx;
         background-repeat: no-repeat;
         background-position: bottom;
     }
 }
-.mint-1px-l {
+.mint-1rpx-l {
     background-image: -webkit-linear-gradient(left, #d9d9d9, #d9d9d9 100%);
     background-image: linear-gradient(90deg, #d9d9d9, #d9d9d9 100%);
-    background-size: 1px 100%;
+    background-size: 1rpx 100%;
     background-repeat: no-repeat;
     background-position: left;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    .mint-1px-l {
+    .mint-1rpx-l {
         background-image: -webkit-linear-gradient(left, #d9d9d9, #d9d9d9 50%, transparent 50%);
         background-image: linear-gradient(90deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
-        background-size: 1px 100%;
+        background-size: 1rpx 100%;
         background-repeat: no-repeat;
         background-position: left;
     }
 }
-.mint-1px-r {
+.mint-1rpx-r {
     background-image: -webkit-linear-gradient(right, #d9d9d9, #d9d9d9 100%);
     background-image: linear-gradient(270deg, #d9d9d9, #d9d9d9 100%);
-    background-size: 1px 100%;
+    background-size: 1rpx 100%;
     background-repeat: no-repeat;
     background-position: right;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    .mint-1px-r {
+    .mint-1rpx-r {
         background-image: -webkit-linear-gradient(right, #d9d9d9, #d9d9d9 50%, transparent 50%);
         background-image: linear-gradient(270deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
-        background-size: 1px 100%;
+        background-size: 1rpx 100%;
         background-repeat: no-repeat;
         background-position: right;
     }
