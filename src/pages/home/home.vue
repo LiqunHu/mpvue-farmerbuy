@@ -48,7 +48,7 @@ export default {
     async getShowLists() {
       let _self = this
       try {
-        let response = await _self.$http.get(`/movie/coming/?limit=20&offset=0`)
+        let response = await _self.$http.get(`/movie/hot/?city=bj`)
         _self.showlists = response.data.data.returnValue
         console.log(_self.showlists)
       } catch (error) {
