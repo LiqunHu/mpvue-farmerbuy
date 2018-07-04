@@ -21,8 +21,6 @@
               <button class="movie-item-buy">购买</button>
             </view>
           </view>
-        </div>
-      </view>
         </view>
       </view>
         <!-- <figure class="m-img ml fl pr">
@@ -59,7 +57,7 @@
           <span class="border-right">1212五折狂欢</span>
           <span class="tddd">1212特惠抢票，名额有限抢完即止</span>
         </div> -->
-      </view>
+    </view>
 </template>
 <script>
 export default {
