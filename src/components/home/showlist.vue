@@ -3,15 +3,25 @@
   		<view :class="{'border-bottom': showlists[showlists.length-1] != item}" v-for="item in showlists" :key="item.id">
         <view class="movie-item">
           <image class="movie-item-poster" :src="'https://gw.alicdn.com/' + item.poster"></image>
-          <view class="movie-item-meta">
-            <text class="movie-item-title">{{ item.showName }}</text>
-            <div class="full-star">
-							<div class="score-start" :style="'width: ' + item.remark * 10 + 'rpx'"></div>
-							<span class="score">{{ item.remark }}</span>
-						</div>
-            <!-- <text class="md-movie-item__sub-title">{{ movie.original_title }} ({{ movie.year }})</text>
-            <view class="md-movie-item__artists">导演：<block v-for="(director, i) in movie.directors" :key="director.id"> {{ director.name }} </block></view> -->
+          <view class="movie-item-body">
+            <view class="movie-item-meta">
+              <text class="movie-item-title">{{ item.showName }}</text>
+              <div class="starts">
+                <div class="full-star">
+                  <div class="score-start" :style="'width: ' + item.remark * 10 + '%'"></div>
+                </div>
+                <span class="score">{{ item.remark }}</span>
+              </div>
+              <p class="desc">{{ item.highlight }}</p>
+              <p class="desc">{{ item.leadingRole}}</p>
+              <!-- <text class="md-movie-item__sub-title">{{ movie.original_title }} ({{ movie.year }})</text>
+              <view class="md-movie-item__artists">导演：<block v-for="(director, i) in movie.directors" :key="director.id"> {{ director.name }} </block></view> -->
+            </view>
+            <view class="movie-item-act">
+              <button class="movie-item-buy">购买</button>
+            </view>
           </view>
+        </div>
       </view>
         </view>
       </view>
@@ -72,47 +82,77 @@ export default {
 .movie-list {
   height: 100%;
 }
-
 .movie-item {
   display: flex;
+  flex-direction: row;
   padding: 20rpx 40rpx;
-  border-bottom: 1rpx solid #eee;
-  cursor: pointer;
 }
-
 .movie-item-poster {
   width: 128rpx;
   height: 168rpx;
   margin-right: 20rpx;
 }
-
+.movie-item-body {
+  display: flex;
+  flex-direction: row;
+  height: 170rpx;
+  width: 600rpx;
+  border-bottom: 1rpx solid #eee;
+}
 .movie-item-meta {
   flex: 1;
+  height: 168rpx;
 }
-
+.movie-item-act {
+  height: 168rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.movie-item-buy {
+  display: inline-block;
+  /* margin: 10rpx auto; */
+  padding: 1rpx 30rpx;
+  color: #ff4d64;
+  border: 1rpx solid #ff4d64;
+  font-size: 20rpx;
+  font-weight: bold;
+}
 .movie-item-title {
-  display: block;
-  margin-bottom: 15rpx;
+  /* margin-bottom: 15rpx; */
   font-size: 32rpx;
 }
+.starts {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15rpx;
+}
 .full-star {
-  display: inline-flex;
-	/* margin-top: 4rpx; */
-  width: 50rpx;
-  height: 10rpx;
+  /* margin-top: 4rpx; */
+  width: 96rpx;
+  height: 20rpx;
   background-size: auto 100%;
   background-image: url('../../assets/images/nostart.svg');
 }
 .score-start {
-	width: 100%;
-	height: 100%;
-	background-size: auto 100%;
-	background-image: url('../../assets/images/star.svg');
+  width: 100%;
+  height: 100%;
+  background-size: auto 100%;
+  background-image: url('../../assets/images/star.svg');
 }
 .score {
-	right: -21rpx;
-	top: -1rpx;
-	font-size: 10rpx;
-	color: #9c9c9c;
+  /* margin-left: 100rpx; */
+  margin-top: -2rpx;
+  font-size: 20rpx;
+  color: #9c9c9c;
+}
+.desc {
+  width: 400rpx;
+  margin-top: 12rpx;
+  font-size: 20rpx;
+  color: #9c9c9c;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 </style>
