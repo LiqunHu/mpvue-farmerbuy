@@ -35,10 +35,10 @@ export default {
           selectedIconPath: 'static/images/board-actived.png'
         },
         {
-          text: '搜索',
-          pagePath: 'pages/index/main',
-          iconPath: 'static/images/search.png',
-          selectedIconPath: 'static/images/search-actived.png'
+          text: '我的',
+          pagePath: 'pages/profile/main',
+          iconPath: 'static/images/profile.png',
+          selectedIconPath: 'static/images/profile-actived.png'
         }
       ]
     }
