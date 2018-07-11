@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="actgroup">
-      <a class="actgroup-item">
+      <a class="actgroup-item" @click="aaa()">
         <div class="actgroup-item-area">
           <image class="actgroup-item-icon" src="/static/images/list.png"></image>
           <text class="actgroup-item-desc">全部订单</text>
@@ -53,6 +53,9 @@ export default {
   components: {
   },
   methods: {
+    aaa() {
+      console.log('1111')
+    }
   },
   created() {
   }
