@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="profile">
     <div class="userinfo">
       <div class="userinfo-avatar">
         <img class="userinfo-avatar-img" src="/static/images/head.jpg" background-size="cover" />
@@ -14,6 +14,32 @@
       <div class="myorder-check">
         <a>查看全部 ></a>
       </div>
+    </div>
+    <div class="actgroup">
+      <a class="actgroup-item">
+        <div class="actgroup-item-area">
+          <image class="actgroup-item-icon" src="/static/images/list.png"></image>
+          <text class="actgroup-item-desc">全部订单</text>
+        </div>
+      </a>
+      <a class="actgroup-item">
+        <div class="actgroup-item-area">
+          <image class="actgroup-item-icon" src="/static/images/pay.png"></image>
+          <text class="actgroup-item-desc">待付款</text>
+        </div> 
+      </a>
+      <a class="actgroup-item">
+        <div class="actgroup-item-area">
+          <image class="actgroup-item-icon" src="/static/images/shipping.png"></image>
+          <text class="actgroup-item-desc">待发货</text>
+        </div> 
+      </a>
+      <a class="actgroup-item">
+        <div class="actgroup-item-area">
+          <image class="actgroup-item-icon" src="/static/images/getting.png"></image>
+          <text class="actgroup-item-desc">待收货</text>
+        </div> 
+      </a>
     </div>
   </div>
 </template>
@@ -33,11 +59,16 @@ export default {
 }
 </script>
 <style scoped>
+.profile {
+  display: flex;
+  flex-direction: column;
+}
+
 .userinfo {
   display: flex;
   flex-direction: row;
   height: 275rpx;
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(250, 250, 250);
 }
 
 .underline {
@@ -80,11 +111,12 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   padding: 30rpx;
+  background-color: white;
 }
 
 .myorder-order {
   /* margin-left: 30rpx; */
-  font-size: 40rpx; 
+  font-size: 40rpx;
 }
 
 .myorder-check {
@@ -93,7 +125,37 @@ export default {
   justify-content: center;
   align-items: center;
   /* margin-left: 30rpx; */
-  font-size: 35rpx; 
-  font-weight:300;
+  font-size: 35rpx;
+  font-weight: 300;
+}
+
+.actgroup {
+  display: flex;
+  flex-direction: row;
+  height: 200rpx;
+  border-bottom: 18rpx solid #eee;
+}
+
+.actgroup-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.actgroup-item-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.actgroup-item-icon {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.actgroup-item-desc {
+  font-size: 25rpx;
+  text-align: center;
 }
 </style>

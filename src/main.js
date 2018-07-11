@@ -29,10 +29,10 @@ export default {
       backgroundColor: '#f8f9fb',
       list: [
         {
-          text: '榜单',
+          text: '首页',
           pagePath: 'pages/home/main',
-          iconPath: 'static/images/board.png',
-          selectedIconPath: 'static/images/board-actived.png'
+          iconPath: 'static/images/home.png',
+          selectedIconPath: 'static/images/home-actived.png'
         },
         {
           text: '我的',
