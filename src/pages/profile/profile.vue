@@ -1,12 +1,18 @@
 <template>
   <div class="profile">
-    <div class="userinfo">
+    <div v-if="Math.random() > 0.5" class="userinfo">
       <div class="userinfo-avatar">
         <img class="userinfo-avatar-img" src="/static/images/head.jpg" background-size="cover" />
       </div>
       <div class="userinfo-desc">
         <div class="userinfo-desc-name">aaaaaa</div>
         <div class="userinfo-desc-email">11111@11.com</div>
+      </div>
+    </div>
+    <div v-else class="userinfo">
+      <div class="userinfo-login">
+        <div class="userinfo-login-text">登录/注册</div>
+        <div class="userinfo-login-right">></div>
       </div>
     </div>
     <div class="myorder underline">
@@ -72,6 +78,32 @@ export default {
   flex-direction: row;
   height: 275rpx;
   background-color: rgb(250, 250, 250);
+}
+
+.userinfo-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.userinfo-login-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 50rpx;
+  font-weight: bolder;
+  padding-left: 40rpx;
+}
+
+.userinfo-login-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 80rpx;
+  font-weight: lighter;
+  padding-left: 410rpx;
 }
 
 .underline {
