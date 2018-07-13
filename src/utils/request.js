@@ -4,9 +4,11 @@ import Fly from 'flyio'
 const request = new Fly()
 
 request.config.timeout = 10 * 1000
+// request.config.baseURL = 'http://localhost:9090'
 request.config.baseURL = 'http://120.24.236.69:9093'
-// if (process.env.METHOD === 'proxy1') {
-//   request.config.baseURL = 'http://localhost:3001/douban' // 本地代理1(100次/小时)
+// if (process.env.METHOD === 'local') {
+//   request.config.baseURL = 'http://localhost:9090'
+// }
 // } else if (process.env.METHOD === 'proxy2') {
 //   request.config.baseURL = 'http://localhost:3002' // 本地代理2(100次/小时)
 // } else if (process.env.METHOD === 'nginx') {

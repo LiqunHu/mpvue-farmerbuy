@@ -3,7 +3,7 @@
     <section class="content">
       <swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" indicator-active-color="#ff5733">
         <swiper-item v-for="(item, index) in imgs" :key="index">
-          <image class="slide-image" :src="'https://gw.alicdn.com/tfs/' + item.smallPicUrl" mode="aspectFill" lazy-load="true"/>
+          <image class="slide-image" :src="'https://gw.alicdn.com/tfs/' + item.url" mode="aspectFill" lazy-load="true"/>
         </swiper-item>
       </swiper>
       <showlist :showlists="showlists"></showlist>
@@ -25,6 +25,8 @@
 
 <script>
 import showlist from '@/components/home/showlist'
+const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
+
 export default {
   data() {
     return {
@@ -39,8 +41,8 @@ export default {
     async getSwiper() {
       let _self = this
       try {
-        let response = await _self.$http.get('/movie/swiper')
-        _self.imgs = response.data.data.returnValue
+        let response = await _self.$http.post(apiUrl + 'getSwiper', {})
+        _self.imgs = response.info
       } catch (error) {
         console.error(error)
       }
@@ -59,7 +61,7 @@ export default {
   created() {
     let _self = this
     try {
-      _self.getSwiper()
+      // _self.getSwiper()
       _self.getShowLists()
     } catch (error) {
       console.error(error)
