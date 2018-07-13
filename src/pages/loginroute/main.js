@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import store from '@/store'
-import App from './home'
+import App from './loginroute'
 
 const app = new Vue({
   store,
@@ -10,6 +10,6 @@ app.$mount()
 
 export default {
   config: {
-    navigationBarTitleText: '侬买'
+    navigationBarTitleText: '登录'
   }
 }

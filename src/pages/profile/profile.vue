@@ -1,6 +1,6 @@
 <template>
   <div class="profile">
-    <div v-if="Math.random() > 0.5" class="userinfo">
+    <div v-if="loginState === 1" class="userinfo">
       <div class="userinfo-avatar">
         <img class="userinfo-avatar-img" src="/static/images/head.jpg" background-size="cover" />
       </div>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div v-else class="userinfo">
-      <div class="userinfo-login">
+      <div class="userinfo-login" @click="loginRoute()">
         <div class="userinfo-login-text">登录/注册</div>
         <div class="userinfo-login-right">></div>
       </div>
@@ -51,7 +51,14 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
+  computed: {
+    ...mapState('access', {
+      loginState: state => state.loginState,
+      userInfo: state => state.userInfo
+    })
+  },
   data() {
     return {
     }
@@ -59,6 +66,11 @@ export default {
   components: {
   },
   methods: {
+    ...mapActions('access', [
+    ]),
+    loginRoute() {
+      wx.navigateTo({ url: '../loginroute/main' })
+    },
     aaa() {
       console.log('1111')
     }

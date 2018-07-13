@@ -1,31 +1,39 @@
-import { getBoardData } from '@/utils/api'
-import { BOARD_MOVIE_LIST } from '@/store/mutations-type'
+import {
+  ACCESS_LOGIN,
+  ACCESS_LOGOUT
+} from '@/store/mutations-type'
 
 const state = {
-  loginState: 0,
-  userInfo: {}
+  loginState: wx.getStorageSync('loginState') || 0,
+  userInfo: wx.getStorageSync('userInfo') || {}
 }
 
 const mutations = {
-  [BOARD_MOVIE_LIST] (state, { boards }) {
-    let data
-    state.boards = state.boards.map((board, i) => {
-      data = boards[i]
-      board.title = data.title
-      board.movies = data.subjects
-      return board
-    })
-    state.movies = state.boards[0].movies
+  [ACCESS_LOGIN](state, {
+    userInfo
+  }) {
+    state.loginState = 1
+    state.userInfo = userInfo
+    wx.setStorageSync('loginState', state.loginState)
+    wx.setStorageSync('userInfo', state.userInfo)
+  },
+  [ACCESS_LOGOUT]: (state) => {
+    state.loginState = 0
+    state.userInfo = {}
+    wx.setStorageSync('loginState', state.loginState)
+    wx.setStorageSync('userInfo', state.userInfo)
   }
 }
 
 const actions = {
-  async getBoards ({state, commit}) {
-    const tasks = state.boards.map(board => {
-      return getBoardData({ board: board.key, page: 1, count: 8 })
+  async login({
+    state,
+    commit
+  }) {
+    let userInfo = {}
+    commit(ACCESS_LOGIN, {
+      userInfo: userInfo
     })
-    let boards = await Promise.all(tasks)
-    commit(BOARD_MOVIE_LIST, { boards })
   }
 }
 

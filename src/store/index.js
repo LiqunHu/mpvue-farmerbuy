@@ -1,25 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import item from './modules/item'
-import board from './modules/board'
-import list from './modules/list'
+import access from './modules/access'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    item: {
+    access: {
       namespaced: true,
-      ...item
-    },
-    board: {
-      namespaced: true,
-      ...board
-    },
-    list: {
-      namespaced: true,
-      ...list
+      ...access
     }
   }
 })
