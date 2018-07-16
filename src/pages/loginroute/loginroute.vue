@@ -3,8 +3,8 @@
     <button class="loginbutton" type="primary" size="default" open-type="getUserInfo" @click="wxlogin()">微信登录</button>
   </div>
 </template>
-
 <script>
+const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
 export default {
   data() {
     return {
@@ -30,21 +30,28 @@ export default {
       // })
       // let appId = 'wx1bf0976923162a6b'
       // let appSecret = 'f03e63ca1aca1c007b5915b54b6ec8c7'
-      // wx.login({
-      //   success: function (res) {
-      //     if (res.code) {
-      //       //发起网络请求
-      //       wx.request({
-      //         url: 'https://test.com/onLogin',
-      //         data: {
-      //           code: res.code
-      //         }
-      //       })
-      //     } else {
-      //       console.log('登录失败！' + res.errMsg)
-      //     }
-      //   }
-      // })
+      let _self = this
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            wx.getSetting({
+              success: function (setting) {
+                if (setting.authSetting['scope.userInfo']) {
+                  // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                  wx.getUserInfo({
+                    success: async function (info) {
+                      let response = await _self.$http.post(apiUrl + 'wxLogin', { code: res.code, info: info })
+                      console.log(response)
+                    }
+                  })
+                }
+              }
+            })
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+      })
     }
   },
   created() {

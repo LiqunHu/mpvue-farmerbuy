@@ -42,7 +42,7 @@ export default {
       let _self = this
       try {
         let response = await _self.$http.post(apiUrl + 'getSwiper', {})
-        _self.imgs = response.info
+        _self.imgs = response.info.data
       } catch (error) {
         console.error(error)
       }
@@ -50,9 +50,8 @@ export default {
     async getShowLists() {
       let _self = this
       try {
-        let response = await _self.$http.get(`/movie/hot/?city=bj`)
-        _self.showlists = response.data.data.returnValue
-        console.log(_self.showlists)
+        let response = await _self.$http.post(apiUrl + 'getGoodsList', {})
+        _self.showlists = response.info.data
       } catch (error) {
         console.error(error)
       }
@@ -61,7 +60,7 @@ export default {
   created() {
     let _self = this
     try {
-      // _self.getSwiper()
+      _self.getSwiper()
       _self.getShowLists()
     } catch (error) {
       console.error(error)

@@ -1,25 +1,32 @@
 <template>
-    <view class="movie-list">
+    <view class="show-list">
   		<view :class="{'border-bottom': showlists[showlists.length-1] != item}" v-for="item in showlists" :key="item.id">
-        <view class="movie-item">
-          <image class="movie-item-poster" :src="'https://gw.alicdn.com/' + item.poster"></image>
-          <view class="movie-item-body">
-            <view class="movie-item-meta">
-              <text class="movie-item-title">{{ item.showName }}</text>
-              <div class="starts">
+        <view class="show-item">
+          <image class="show-item-poster" :src="'https://gw.alicdn.com/' + item.url"></image>
+          <view class="show-item-body">
+            <view class="show-item-meta">
+              <text class="show-item-title">{{ item.showName }}</text>
+              <!-- <div class="starts">
                 <div class="full-star">
                   <div class="score-start" :style="'width: ' + item.remark * 10 + '%'"></div>
                 </div>
                 <span class="score">{{ item.remark }}</span>
+              </div> -->
+              <p class="show-item-desc">{{ item.desc }}</p>
+              <div class="show-item-price-sales">
+                <div class="show-item-price">
+                  <div class="show-item-price-mark">¥</div>
+                  <div>{{ item.price }}</div>
+                </div>
+                <div class="show-item-sales">已销售{{ item.sales }}</div>
               </div>
-              <p class="desc">{{ item.highlight }}</p>
-              <p class="desc">{{ item.leadingRole}}</p>
-              <!-- <text class="md-movie-item__sub-title">{{ movie.original_title }} ({{ movie.year }})</text>
-              <view class="md-movie-item__artists">导演：<block v-for="(director, i) in movie.directors" :key="director.id"> {{ director.name }} </block></view> -->
+              <!-- <p class="desc">{{ item.leadingRole}}</p> -->
+              <!-- <text class="md-show-item__sub-title">{{ movie.original_title }} ({{ movie.year }})</text>
+              <view class="md-show-item__artists">导演：<block v-for="(director, i) in movie.directors" :key="director.id"> {{ director.name }} </block></view> -->
             </view>
-            <view class="movie-item-act">
-              <button class="movie-item-buy">购买</button>
-            </view>
+            <!-- <view class="show-item-act">
+              <button class="show-item-buy">购买</button>
+            </view> -->
           </view>
         </view>
       </view>
@@ -77,37 +84,37 @@ export default {
 }
 </script>
 <style>
-.movie-list {
+.show-list {
   height: 100%;
 }
-.movie-item {
+.show-item {
   display: flex;
   flex-direction: row;
   padding: 20rpx 40rpx;
 }
-.movie-item-poster {
+.show-item-poster {
   width: 128rpx;
   height: 168rpx;
   margin-right: 20rpx;
 }
-.movie-item-body {
+.show-item-body {
   display: flex;
   flex-direction: row;
   height: 170rpx;
   width: 600rpx;
   border-bottom: 1rpx solid #eee;
 }
-.movie-item-meta {
+.show-item-meta {
   flex: 1;
   height: 168rpx;
 }
-.movie-item-act {
+.show-item-act {
   height: 168rpx;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.movie-item-buy {
+.show-item-buy {
   display: inline-block;
   /* margin: 10rpx auto; */
   padding: 1rpx 30rpx;
@@ -116,8 +123,7 @@ export default {
   font-size: 20rpx;
   font-weight: bold;
 }
-.movie-item-title {
-  /* margin-bottom: 15rpx; */
+.show-item-title {
   font-size: 32rpx;
 }
 .starts {
@@ -144,13 +150,35 @@ export default {
   font-size: 20rpx;
   color: #9c9c9c;
 }
-.desc {
+.show-item-desc {
   width: 400rpx;
-  margin-top: 12rpx;
+  /* margin-top: 5rpx; */
   font-size: 20rpx;
   color: #9c9c9c;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+.show-item-price-sales {
+  display: flex;
+  justify-content: space-between;
+}
+.show-item-price {
+  display: flex;
+  flex-direction: row;
+  color: orangered;
+}
+.show-item-price-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25rpx;
+}
+.show-item-sales {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #9c9c9c;
+  font-size: 20rpx;
 }
 </style>
