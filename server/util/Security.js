@@ -130,7 +130,7 @@ exports.aesDecryptModeCFB = (msg, pwd, magicNo) => {
 exports.user2token = (type, user, identifyCode, magicNo) => {
   try {
     let expires = ''
-    if (type === 'MOBILE') {
+    if (type === 'MOBILE' || type === 'WEIXIN') {
       expires = Date.now() + config.MOBILE_TOKEN_AGE;
     } else {
       expires = Date.now() + config.TOKEN_AGE;

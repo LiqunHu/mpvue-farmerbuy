@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
+// const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
 export default {
   data() {
     return {
@@ -32,21 +32,24 @@ export default {
       // let appSecret = 'f03e63ca1aca1c007b5915b54b6ec8c7'
       let _self = this
       wx.login({
-        success: function (res) {
+        success: async function (res) {
           if (res.code) {
-            wx.getSetting({
-              success: function (setting) {
-                if (setting.authSetting['scope.userInfo']) {
-                  // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-                  wx.getUserInfo({
-                    success: async function (info) {
-                      let response = await _self.$http.post(apiUrl + 'wxLogin', { code: res.code, info: info })
-                      console.log(response)
-                    }
-                  })
-                }
-              }
-            })
+            let response = await _self.$http.post('/api/auth', { loginType: 'WEIXIN', wxCode: res.code })
+            console.log(response)
+
+            // wx.getSetting({
+            //   success: function (setting) {
+            //     if (setting.authSetting['scope.userInfo']) {
+            //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+            //       wx.getUserInfo({
+            //         success: async function (info) {
+            //           let response = await _self.$http.post('/api/auth', { code: res.code, info: info })
+            //           console.log(response)
+            //         }
+            //       })
+            //     }
+            //   }
+            // })
           } else {
             console.log('登录失败！' + res.errMsg)
           }

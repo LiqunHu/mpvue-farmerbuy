@@ -6,6 +6,9 @@ const Sequence = require('../../util/Sequence');
 const logger = require('../../util/Logger').createLogger('FarmerbuyMPSRV');
 const config = require('../../config');
 const model = require('../../model');
+const Security = require('../../util/Security');
+
+const tb_common_user = model.common_user;
 
 exports.FarmerbuyMPResource = (req, res) => {
   let method = req.query.method
@@ -93,6 +96,20 @@ async function wxLoginAct(req, res) {
     let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + doc.code + '&grant_type=authorization_code'
     let wxAuth = await rp(url)
     console.log(wxAuth)
+    if (wxAuth.openid) {
+      let loginUser = await tb_common_user.findOne({
+        where: {
+          user_wx_openid: wxAuth.openid,
+          state: GLBConfig.ENABLE
+        }
+      });
+      if (!loginUser) {
+        return common.sendError(res, 'auth_222')
+      }
+
+    } else {
+      return common.sendError(res, 'auth_21')
+    }
 
     common.sendData(res, returnData);
   } catch (error) {
