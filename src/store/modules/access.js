@@ -29,8 +29,9 @@ const actions = {
   async login({
     state,
     commit
+  }, {
+    userInfo
   }) {
-    let userInfo = {}
     commit(ACCESS_LOGIN, {
       userInfo: userInfo
     })

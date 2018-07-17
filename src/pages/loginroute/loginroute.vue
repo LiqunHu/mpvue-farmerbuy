@@ -5,12 +5,22 @@
 </template>
 <script>
 // const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
+import { mapState, mapActions } from 'vuex'
 export default {
+  computed: {
+    ...mapState('access', {
+      loginState: state => state.loginState,
+      userInfo: state => state.userInfo
+    })
+  },
   data() {
     return {
     }
   },
   methods: {
+    ...mapActions('access', [
+      'login'
+    ]),
     wxlogin() {
       // 查看是否授权
       // wx.getSetting({
@@ -34,9 +44,13 @@ export default {
       wx.login({
         success: async function (res) {
           if (res.code) {
-            let response = await _self.$http.post('/api/auth', { loginType: 'WEIXIN', wxCode: res.code })
-            console.log(response)
-
+            try {
+              let response = await _self.$http.post('/api/auth', { loginType: 'WEIXIN', wxCode: res.code })
+              console.log(response)
+              await _self.login(response.info)
+            } catch (error) {
+              console.log('登录失败！' + error)
+            }
             // wx.getSetting({
             //   success: function (setting) {
             //     if (setting.authSetting['scope.userInfo']) {
