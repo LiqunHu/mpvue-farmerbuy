@@ -75,6 +75,7 @@ exports.AuthResource = async (req, res) => {
       }
       let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + config.weixin.appid + '&secret=' + config.weixin.app_secret + '&js_code=' + doc.wxCode + '&grant_type=authorization_code'
       let wxAuth = await rp(url)
+      logger.info(wxAuth)
       let wxAuthjs = JSON.parse(wxAuth)
       if (wxAuthjs.openid) {
         user = await tb_common_user.findOne({

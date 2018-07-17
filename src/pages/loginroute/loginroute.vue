@@ -22,24 +22,6 @@ export default {
       'login'
     ]),
     wxlogin() {
-      // 查看是否授权
-      // wx.getSetting({
-      //   success: function (res) {
-      //     if (res.authSetting['scope.userInfo']) {
-      //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-      //       wx.getUserInfo({
-      //         success: function (res) {
-      //           let appId = 'wx1bf0976923162a6b'
-      //           let pc = new WXBizDataCrypt(appId, sessionKey)
-      //           console.log(res)
-      //           console.log(res.userInfo)
-      //         }
-      //       })
-      //     }
-      //   }
-      // })
-      // let appId = 'wx1bf0976923162a6b'
-      // let appSecret = 'f03e63ca1aca1c007b5915b54b6ec8c7'
       let _self = this
       wx.login({
         success: async function (res) {
