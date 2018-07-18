@@ -1,6 +1,6 @@
 <template>
   <div class="loginroute">
-    <button class="loginbutton" type="primary" size="default" open-type="getUserInfo" @click="wxlogin()">微信登录</button>
+    <button class="weui-btn weui-btn_primary" type="primary" size="default" open-type="getUserInfo" @click="wxlogin()">微信登录</button>
   </div>
 </template>
 <script>
@@ -28,8 +28,17 @@ export default {
           if (res.code) {
             try {
               let response = await _self.$http.post('/api/auth', { loginType: 'WEIXIN', wxCode: res.code })
-              console.log(response)
-              await _self.login(response.info)
+              if (response.errno === 0) {
+                await _self.login(response.info)
+              } else if (response.errno === 'auth_22') {
+                console.log(response.msg)
+                wx.navigateTo({ url: '../wxreg/main' })
+              } else {
+                wx.showToast({
+                  title: response.msg,
+                  icon: 'none'
+                })
+              }
             } catch (error) {
               console.log('登录失败！' + error)
             }
@@ -62,11 +71,9 @@ export default {
 }
 </script>
 <style scoped>
+@import '../../assets/css/weui.css';
 .loginroute {
   margin-top: 400rpx;
-}
-
-.loginbutton {
-  width: 90%;
+  padding: 0 15px;
 }
 </style>

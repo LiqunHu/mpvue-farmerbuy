@@ -18,11 +18,11 @@
     <div class="myorder underline">
       <div class="myorder-order">我的订单</div>
       <div class="myorder-check">
-        <a>查看全部 ></a>
+        <a @click="aaa()">查看全部 ></a>
       </div>
     </div>
     <div class="actgroup">
-      <a class="actgroup-item" @click="aaa()">
+      <a class="actgroup-item">
         <div class="actgroup-item-area">
           <image class="actgroup-item-icon" src="/static/images/list.png"></image>
           <text class="actgroup-item-desc">全部订单</text>
@@ -67,11 +67,13 @@ export default {
   },
   methods: {
     ...mapActions('access', [
+      'logout'
     ]),
     loginRoute() {
       wx.navigateTo({ url: '../loginroute/main' })
     },
     aaa() {
+      this.logout()
       console.log('1111')
     }
   },

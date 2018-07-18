@@ -27,11 +27,11 @@ request.interceptors.response.use(
   },
   (err, promise) => {
     wx.hideLoading()
-    wx.showToast({
-      title: err.message,
-      icon: 'none'
-    })
-    return promise.resolve()
+    // wx.showToast({
+    //   title: err.message,
+    //   icon: 'none'
+    // })
+    return promise.resolve(err.response.data)
   }
 )
 

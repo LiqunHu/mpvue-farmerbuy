@@ -35,6 +35,12 @@ const actions = {
     commit(ACCESS_LOGIN, {
       userInfo: userInfo
     })
+  },
+  async logout({
+    state,
+    commit
+  }) {
+    commit(ACCESS_LOGOUT)
   }
 }
 
