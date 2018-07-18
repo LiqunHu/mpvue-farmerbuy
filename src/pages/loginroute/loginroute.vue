@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-// const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
 import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
@@ -33,6 +32,10 @@ export default {
               } else if (response.errno === 'auth_22') {
                 console.log(response.msg)
                 wx.navigateTo({ url: '../wxreg/main' })
+                await _self.login(response.info)
+                wx.navigateBack({
+                  delta: 1
+                })
               } else {
                 wx.showToast({
                   title: response.msg,
@@ -42,19 +45,6 @@ export default {
             } catch (error) {
               console.log('登录失败！' + error)
             }
-            // wx.getSetting({
-            //   success: function (setting) {
-            //     if (setting.authSetting['scope.userInfo']) {
-            //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-            //       wx.getUserInfo({
-            //         success: async function (info) {
-            //           let response = await _self.$http.post('/api/auth', { code: res.code, info: info })
-            //           console.log(response)
-            //         }
-            //       })
-            //     }
-            //   }
-            // })
           } else {
             console.log('登录失败！' + res.errMsg)
           }

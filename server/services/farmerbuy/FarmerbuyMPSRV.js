@@ -16,8 +16,8 @@ exports.FarmerbuyMPResource = (req, res) => {
     getSwiperAct(req, res)
   } else if (method === 'getGoodsList') {
     getGoodsListAct(req, res)
-  } else if (method === 'wxLogin') {
-    wxLoginAct(req, res)
+  } else if (method === 'wxReg') {
+    wxRegAct(req, res)
   } else {
     common.sendError(res, 'common_01');
   }
@@ -85,13 +85,10 @@ async function getGoodsListAct(req, res) {
   }
 }
 
-async function wxLoginAct(req, res) {
+async function wxregAct(req, res) {
   try {
     let doc = common.docTrim(req.body),
       returnData = {};
-    console.log(doc)
-    let appid = 'wx1bf0976923162a6b'
-    let secret = 'f03e63ca1aca1c007b5915b54b6ec8c7'
 
     let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + doc.code + '&grant_type=authorization_code'
     let wxAuth = await rp(url)

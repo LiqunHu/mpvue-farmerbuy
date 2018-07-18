@@ -6,7 +6,7 @@
                 <view class="weui-label">手机号</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="输入手机号" />
+                <input class="weui-input" placeholder="输入手机号" v-model="phone"/>
             </view>
             <view class="weui-cell__ft">
                 <view class="weui-vcode-btn">获取验证码</view>
@@ -17,7 +17,7 @@
                 <view class="weui-label">验证码</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入验证码" />
+                <input class="weui-input" placeholder="请输入验证码" v-model="captcha"/>
             </view>
         </view>
     </view>
@@ -29,6 +29,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
 export default {
   computed: {
     ...mapState('access', {
@@ -38,6 +39,8 @@ export default {
   },
   data() {
     return {
+      phone: '',
+      captcha: ''
     }
   },
   components: {
@@ -47,7 +50,47 @@ export default {
       'logout'
     ]),
     wxReg() {
-      console.log(33333)
+      let _self = this
+      wx.login({
+        success: async function (res) {
+          if (res.code) {
+            // try {
+            //   let response = await _self.$http.post('/api/auth', { loginType: 'WEIXIN', wxCode: res.code })
+            //   if (response.errno === 0) {
+            //     await _self.login(response.info)
+            //     wx.navigateBack({
+            //       delta: 1
+            //     })
+            //   } else if (response.errno === 'auth_22') {
+            //     console.log(response.msg)
+            //     wx.navigateTo({ url: '../wxreg/main' })
+            //   } else {
+            //     wx.showToast({
+            //       title: response.msg,
+            //       icon: 'none'
+            //     })
+            //   }
+            // } catch (error) {
+            //   console.log('登录失败！' + error)
+            // }
+            wx.getSetting({
+              success: function (setting) {
+                if (setting.authSetting['scope.userInfo']) {
+                  // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                  wx.getUserInfo({
+                    success: async function (info) {
+                      let response = await _self.$http.post(apiUrl + '/api/auth', { code: res.code, info: info, phone: _self.phone, captcha: _self.captcha })
+                      console.log(response)
+                    }
+                  })
+                }
+              }
+            })
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+      })
     }
   },
   created() {
