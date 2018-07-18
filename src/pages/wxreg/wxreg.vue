@@ -79,7 +79,7 @@ export default {
                   // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                   wx.getUserInfo({
                     success: async function (info) {
-                      let response = await _self.$http.post(apiUrl + '/api/auth', { code: res.code, info: info, phone: _self.phone, captcha: _self.captcha })
+                      let response = await _self.$http.post(apiUrl + 'wxReg', { code: res.code, info: info, phone: _self.phone, captcha: _self.captcha })
                       console.log(response)
                     }
                   })
