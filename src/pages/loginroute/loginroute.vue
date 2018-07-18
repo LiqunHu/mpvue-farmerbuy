@@ -29,13 +29,12 @@ export default {
               let response = await _self.$http.post('/api/auth', { loginType: 'WEIXIN', wxCode: res.code })
               if (response.errno === 0) {
                 await _self.login(response.info)
-              } else if (response.errno === 'auth_22') {
-                console.log(response.msg)
-                wx.navigateTo({ url: '../wxreg/main' })
-                await _self.login(response.info)
                 wx.navigateBack({
                   delta: 1
                 })
+              } else if (response.errno === 'auth_22') {
+                console.log(response.msg)
+                wx.navigateTo({ url: '../wxreg/main' })
               } else {
                 wx.showToast({
                   title: response.msg,
