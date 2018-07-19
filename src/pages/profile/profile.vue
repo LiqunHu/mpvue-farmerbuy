@@ -2,10 +2,10 @@
   <div class="profile">
     <div v-if="loginState === 1" class="userinfo">
       <div class="userinfo-avatar">
-        <img class="userinfo-avatar-img" src="/static/images/head.jpg" background-size="cover" />
+        <img class="userinfo-avatar-img" :src="userInfo.avatar" background-size="cover" />
       </div>
       <div class="userinfo-desc">
-        <div class="userinfo-desc-name">aaaaaa</div>
+        <div class="userinfo-desc-name">{{ userInfo.name }}</div>
         <div class="userinfo-desc-email">11111@11.com</div>
       </div>
     </div>
@@ -74,7 +74,6 @@ export default {
     },
     aaa() {
       this.logout()
-      console.log('1111')
     }
   },
   created() {
