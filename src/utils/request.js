@@ -17,6 +17,10 @@ request.config.baseURL = 'http://localhost:9090'
 
 request.interceptors.request.use((request) => {
   wx.showLoading({ title: '加载中...' })
+  let token = wx.getStorageSync('token')
+  if (typeof (token) === 'string') {
+    request.headers['authorization'] = token
+  }
   return request
 })
 

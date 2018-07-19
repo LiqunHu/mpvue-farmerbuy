@@ -73,10 +73,17 @@ exports.AuthResource = async (req, res) => {
       if (!('wxCode' in doc)) {
         return common.sendError(res, 'auth_20');
       }
-      let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + config.weixin.appid + '&secret=' + config.weixin.app_secret + '&js_code=' + doc.wxCode + '&grant_type=authorization_code'
-      let wxAuth = await rp(url)
-      logger.info(wxAuth)
-      let wxAuthjs = JSON.parse(wxAuth)
+
+      let wxAuthjs 
+      if(!('wxAuthjs' in doc)) {
+        let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + config.weixin.appid + '&secret=' + config.weixin.app_secret + '&js_code=' + doc.wxCode + '&grant_type=authorization_code'
+        let wxAuth = await rp(url)
+        logger.info(wxAuth)
+        wxAuthjs = JSON.parse(wxAuth)
+      } else {
+        wxAuthjs = doc.wxAuthjs 
+      }
+      
       if (wxAuthjs.openid) {
         user = await tb_common_user.findOne({
           where: {

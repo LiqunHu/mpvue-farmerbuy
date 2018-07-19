@@ -16,12 +16,12 @@ const mutations = {
     state.userInfo = userInfo
     wx.setStorageSync('loginState', state.loginState)
     wx.setStorageSync('userInfo', state.userInfo)
+    wx.setStorageSync('token', userInfo.authorization)
   },
   [ACCESS_LOGOUT]: (state) => {
     state.loginState = 0
     state.userInfo = {}
-    wx.setStorageSync('loginState', state.loginState)
-    wx.setStorageSync('userInfo', state.userInfo)
+    wx.clearStorageSync()
   }
 }
 

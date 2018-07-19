@@ -43,44 +43,34 @@ export default {
       captcha: ''
     }
   },
-  components: {
-  },
   methods: {
     ...mapActions('access', [
-      'logout'
+      'login'
     ]),
     wxReg() {
       let _self = this
       wx.login({
         success: async function (res) {
           if (res.code) {
-            // try {
-            //   let response = await _self.$http.post('/api/auth', { loginType: 'WEIXIN', wxCode: res.code })
-            //   if (response.errno === 0) {
-            //     await _self.login(response.info)
-            //     wx.navigateBack({
-            //       delta: 1
-            //     })
-            //   } else if (response.errno === 'auth_22') {
-            //     console.log(response.msg)
-            //     wx.navigateTo({ url: '../wxreg/main' })
-            //   } else {
-            //     wx.showToast({
-            //       title: response.msg,
-            //       icon: 'none'
-            //     })
-            //   }
-            // } catch (error) {
-            //   console.log('登录失败！' + error)
-            // }
             wx.getSetting({
               success: function (setting) {
                 if (setting.authSetting['scope.userInfo']) {
                   // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                   wx.getUserInfo({
                     success: async function (info) {
-                      let response = await _self.$http.post(apiUrl + 'wxReg', { code: res.code, info: info, phone: _self.phone, captcha: _self.captcha })
+                      let response = await _self.$http.post(apiUrl + 'wxReg', { wxCode: res.code, info: info.userInfo, phone: _self.phone, captcha: _self.captcha })
                       console.log(response)
+                      if (response.errno === 0) {
+                        await _self.login({ userInfo: response.info })
+                        wx.navigateBack({
+                          delta: 2
+                        })
+                      } else {
+                        wx.showToast({
+                          title: response.msg,
+                          icon: 'none'
+                        })
+                      }
                     }
                   })
                 }

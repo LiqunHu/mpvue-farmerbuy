@@ -28,7 +28,7 @@ export default {
             try {
               let response = await _self.$http.post('/api/auth', { loginType: 'WEIXIN', wxCode: res.code })
               if (response.errno === 0) {
-                await _self.login(response.info)
+                await _self.login({ userInfo: response.info })
                 wx.navigateBack({
                   delta: 1
                 })

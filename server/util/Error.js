@@ -52,4 +52,9 @@ module.exports = {
     auth_20: 'wxCode is missing', 
     auth_21: '微信验证失败',
     auth_22: '用户不存在',
+    farmerbuywx_01: 'wxCode is missing',
+    farmerbuywx_02: 'phone is missing',
+    farmerbuywx_03: 'captcha is missing',
+    farmerbuywx_04: 'info is missing', 
+    farmerbuywx_05: '微信授权失败'
 };

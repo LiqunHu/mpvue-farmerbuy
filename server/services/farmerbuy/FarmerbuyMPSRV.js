@@ -7,8 +7,11 @@ const logger = require('../../util/Logger').createLogger('FarmerbuyMPSRV');
 const config = require('../../config');
 const model = require('../../model');
 const Security = require('../../util/Security');
+const AuthSRV = require('../../util/AuthSRV');
 
 const tb_common_user = model.common_user;
+const tb_common_domain = model.common_domain;
+const tb_common_usergroup = model.common_usergroup;
 
 exports.FarmerbuyMPResource = (req, res) => {
   let method = req.query.method
@@ -85,30 +88,79 @@ async function getGoodsListAct(req, res) {
   }
 }
 
-async function wxregAct(req, res) {
+async function wxRegAct(req, res) {
   try {
     let doc = common.docTrim(req.body),
       returnData = {};
 
-    let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + doc.code + '&grant_type=authorization_code'
+    if (!('wxCode' in doc)) {
+      return common.sendError(res, 'farmerbuywx_01');
+    }
+    if (!('phone' in doc)) {
+      return common.sendError(res, 'farmerbuywx_02');
+    }
+    if (!('captcha' in doc)) {
+      return common.sendError(res, 'farmerbuywx_03');
+    }
+    if (!('info' in doc)) {
+      return common.sendError(res, 'farmerbuywx_04');
+    }
+    let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + config.weixin.appid + '&secret=' + config.weixin.app_secret + '&js_code=' + doc.wxCode + '&grant_type=authorization_code'
     let wxAuth = await rp(url)
-    console.log(wxAuth)
-    if (wxAuth.openid) {
-      let loginUser = await tb_common_user.findOne({
+    logger.info(wxAuth)
+    let wxAuthjs = JSON.parse(wxAuth)
+    if (wxAuthjs.openid) {
+      let user = await tb_common_user.findOne({
         where: {
-          user_wx_openid: wxAuth.openid,
+          user_username: doc.phone,
           state: GLBConfig.ENABLE
         }
       });
-      if (!loginUser) {
-        return common.sendError(res, 'auth_222')
+      if (!user) {
+        user = await tb_common_user.findOne({
+          where: {
+            user_phone: doc.phone,
+            state: GLBConfig.ENABLE
+          }
+        });
       }
+      if (user) {
+        user.user_wx_openid = wxAuthjs.openid
+        await user.save()
+      } else {
+        let domain = await tb_common_domain.findOne({
+          where: {
+            domain_type: GLBConfig.DOMAIN_ADMINISTRATOR
+          }
+        })
 
+        let group = await tb_common_usergroup.findOne({
+          where: {
+            usergroup_type: GLBConfig.TYPE_DEFAULT
+          }
+        })
+
+        await tb_common_user.create({
+          user_id: await Sequence.genUserID(),
+          domain_id: domain.domain_id,
+          usergroup_id: group.usergroup_id,
+          user_username: doc.phone,
+          user_wx_openid: wxAuthjs.openid,
+          user_email: doc.user_email,
+          user_phone: doc.phone,
+          user_password: common.generateRandomAlphaNum(6),
+          user_name: doc.info.nickName,
+          user_gender: doc.info.gender,
+          user_type: group.usergroup_type,
+          user_avatar: doc.info.avatarUrl
+        });
+      }
+      req.body.loginType = 'WEIXIN'
+      req.body.wxAuthjs = wxAuthjs 
+      return await AuthSRV.AuthResource(req, res)
     } else {
-      return common.sendError(res, 'auth_21')
+      return common.sendError(res, 'farmerbuywx_02')
     }
-
-    common.sendData(res, returnData);
   } catch (error) {
     common.sendFault(res, error);
   }
