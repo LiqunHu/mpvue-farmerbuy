@@ -1,6 +1,6 @@
 <template>
     <view class="show-list">
-  		<view :class="{'border-bottom': showlists[showlists.length-1] != item}" v-for="item in showlists" :key="item.id">
+  		<view :class="{'border-bottom': showlists[showlists.length-1] != item}" v-for="item in showlists" :key="item.id" @click="toIndex(item.id)">
         <view class="show-item">
           <image class="show-item-poster" :src="'https://gw.alicdn.com/' + item.url"></image>
           <view class="show-item-body">
@@ -80,6 +80,14 @@ export default {
     }
   },
   methods: {
+    toIndex(itemId) {
+      wx.navigateTo({
+        url: '/pages/detail/main?id=' + itemId,
+        success: function (res) {
+          console.log('success')
+        }
+      })
+    }
   }
 }
 </script>
