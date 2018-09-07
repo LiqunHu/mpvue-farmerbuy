@@ -10,6 +10,10 @@ app.$mount()
 
 export default {
   config: {
-    navigationBarTitleText: '侬买'
+    navigationBarTitleText: '侬买',
+    usingComponents: {
+      'van-button': '/static/vant/button/index',
+      'van-notify': '/static/vant/notify/index'
+    }
   }
 }
