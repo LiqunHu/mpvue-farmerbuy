@@ -88,5 +88,5 @@ export default {
 }
 </script>
 <style scoped>
-@import '../../assets/css/weui.css';
+/* @import '../../assets/css/weui.css'; */
 </style>

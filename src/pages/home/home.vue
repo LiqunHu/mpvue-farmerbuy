@@ -1,28 +1,33 @@
 <template>
   <div>
-    <myheader></myheader>
+    <homeheader></homeheader>
+    <homeswiper></homeswiper>
+    <homeshowlist></homeshowlist>
+    <commontabbar :active="0"></commontabbar>
   </div>
 </template>
 
 <script>
-import Myheader from '@/components/home/Myheader'
+import Homeheader from '@/components/home/Homeheader'
+import Homeswiper from '@/components/home/Homeswiper'
+import Homeshowlist from '@/components/home/Homeshowlist'
+import Commontabbar from '@/components/Commontabbar'
 // const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
-import Notify from '@/../static/vant/notify/notify'
+// import Notify from '@/../static/vant/notify/notify'
 
 export default {
   data() {
     return {
-      showlists: [],
-      imgs: []
+      showlists: []
     }
   },
   components: {
-    Myheader
+    Homeheader,
+    Homeswiper,
+    Commontabbar,
+    Homeshowlist
   },
   methods: {
-    onClick () {
-      Notify('通知消息！')
-    }
   },
   created() {
   }

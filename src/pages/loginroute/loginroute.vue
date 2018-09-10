@@ -60,7 +60,7 @@ export default {
 }
 </script>
 <style scoped>
-@import '../../assets/css/weui.css';
+/* @import '../../assets/css/weui.css'; */
 .loginroute {
   margin-top: 400rpx;
   padding: 0 15px;

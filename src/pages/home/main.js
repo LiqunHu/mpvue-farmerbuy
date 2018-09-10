@@ -13,7 +13,10 @@ export default {
     navigationBarTitleText: '侬买',
     usingComponents: {
       'van-button': '/static/vant/button/index',
-      'van-notify': '/static/vant/notify/index'
+      'van-notify': '/static/vant/notify/index',
+      'van-tabbar': '/static/vant/tabbar/index',
+      'van-tabbar-item': '/static/vant/tabbar-item/index',
+      'van-card': '/static/vant/card/index'
     }
   }
 }
