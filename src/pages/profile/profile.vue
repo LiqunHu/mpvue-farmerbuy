@@ -90,7 +90,8 @@ export default {
   display: flex;
   flex-direction: row;
   height: 275rpx;
-  background-color: rgb(250, 250, 250);
+  background-color: #01aee3;
+  color: white;
 }
 
 .userinfo-login {

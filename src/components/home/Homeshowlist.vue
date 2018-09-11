@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <van-card
-      title="标题"
-      desc="描述"
-      num="2"
-      price="2.00"
-      thumb="/static/imgges/location.png"/>
-  </div>
+  <scroll-view scroll-y :style="'height:'+ scrollHeight">
+    <view class="van-hairline--bottom" v-for="item in showlists" :key="item.id">
+      <van-card
+        :title="item.showName"
+        :desc="item.desc"
+        num="1"
+        :price="item.price"
+        :thumb="'https://gw.alicdn.com/' + item.url">
+        <view slot="footer">
+          <van-button size="mini" @click="add2Chart(item)">购买</van-button>
+        </view>
+      </van-card>
+    </view>
+  </scroll-view>
 </template>
 
 <script>
@@ -14,33 +20,59 @@ const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
 export default {
   data() {
     return {
-      imgs: []
+      scrollHeight: 'auto',
+      showlists: []
     }
   },
-  created() {
+  async created() {
     let _self = this
     try {
-      _self.getSwiper()
+      _self.getShowLists()
+      let homeheader = await _self.getItemRect('homeheader')
+      let homeswiper = await _self.getItemRect('homeswiper')
+      let winheight = wx.getSystemInfoSync().windowHeight
+      let autoHeight = winheight - homeheader.height - homeswiper.height
+      _self.scrollHeight = autoHeight + 'px'
     } catch (error) {
       console.error(error)
     }
   },
   methods: {
-    async getSwiper() {
+    async getShowLists() {
       let _self = this
       try {
-        let response = await _self.$http.post(apiUrl + 'getSwiper', {})
-        _self.imgs = response.info.data
+        let response = await _self.$http.post(apiUrl + 'getGoodsList', {})
+        _self.showlists = response.info.data
       } catch (error) {
         console.error(error)
       }
+    },
+    getItemRect(id) {
+      return new Promise(function (resolve, reject) {
+        try {
+          let query = wx.createSelectorQuery()
+          query.select('#' + id).boundingClientRect()
+          query.exec(function (res) {
+            resolve(res[0])
+          })
+        } catch (error) {
+          reject(error)
+        }
+      })
+    },
+    toIndex(itemId) {
+      wx.navigateTo({
+        url: '/pages/detail/main?id=' + itemId,
+        success: function (res) {
+          console.log('success')
+        }
+      })
+    },
+    add2Chart(itemId) {
+      console.log(itemId)
     }
   }
 }
 </script>
 <style scoped>
-.slide-image {
-  height: 100%;
-  width: 100%;
-}
 </style>

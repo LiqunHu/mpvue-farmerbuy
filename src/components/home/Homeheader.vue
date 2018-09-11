@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" id="homeheader">
     <image class="scan-icon" mode="aspectFit" src="/static/images/scan.png"/>
     <text class="scan-text">扫描</text>
 	</div>

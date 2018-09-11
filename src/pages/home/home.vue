@@ -3,7 +3,6 @@
     <homeheader></homeheader>
     <homeswiper></homeswiper>
     <homeshowlist></homeshowlist>
-    <commontabbar :active="0"></commontabbar>
   </div>
 </template>
 
@@ -11,7 +10,6 @@
 import Homeheader from '@/components/home/Homeheader'
 import Homeswiper from '@/components/home/Homeswiper'
 import Homeshowlist from '@/components/home/Homeshowlist'
-import Commontabbar from '@/components/Commontabbar'
 // const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
 // import Notify from '@/../static/vant/notify/notify'
 
@@ -24,7 +22,6 @@ export default {
   components: {
     Homeheader,
     Homeswiper,
-    Commontabbar,
     Homeshowlist
   },
   methods: {
