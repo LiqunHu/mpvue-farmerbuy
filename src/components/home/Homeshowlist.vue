@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
 export default {
   data() {
@@ -38,6 +39,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions('shopchart', [
+      'addtochart'
+    ]),
     async getShowLists() {
       let _self = this
       try {
@@ -69,8 +73,9 @@ export default {
         }
       })
     },
-    add2Chart(itemId) {
-      console.log(itemId)
+    add2Chart(item) {
+      let _self = this
+      _self.addtochart({item: item})
     }
   }
 }
