@@ -53,7 +53,7 @@ async function getGoodsListAct(req, res) {
   try {
     let returnData = {
       data: [{
-          id: '1',
+          goodId: '1',
           url: 'i4/TB1onyyOXXXXXcrapXXXXXXXXXX_.jpg',
           showName: '苹果',
           desc: 'aaaaa',
@@ -61,7 +61,7 @@ async function getGoodsListAct(req, res) {
           sales: '0'
         },
         {
-          id: '2',
+          goodId: '2',
           url: 'i4/TB18r0eOpXXXXa9apXXXXXXXXXX_.jpg',
           showName: '地瓜',
           desc: 'bbbbb',
@@ -69,7 +69,7 @@ async function getGoodsListAct(req, res) {
           sales: '2'
         },
         {
-          id: '3',
+          goodId: '3',
           url: 'i4/TB1FCxZOXXXXXXcaXXXXXXXXXXX_.jpg',
           showName: '土豆',
           desc: 'ccccccc',
@@ -77,13 +77,13 @@ async function getGoodsListAct(req, res) {
           sales: '4'
         },
         {
-          id: '4',
+          goodId: '4',
           url: 'i3/TB1wwcCOpXXXXaCXXXXXXXXXXXX_.jpg',
           showName: '茄子',
           desc: 'ddddddddddddd',
           price: '32.00',
           sales: '100'
-        },
+        }
       ]
     }
     common.sendData(res, returnData);

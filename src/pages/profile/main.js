@@ -11,9 +11,10 @@ app.$mount()
 export default {
   config: {
     navigationBarTitleText: '我的',
-    window: {
-      // navigationBarBackgroundColor: '#ffff00',
-      // backgroundColor: '#eeeeee'
+    usingComponents: {
+      'van-button': '/static/vant/button/index',
+      'van-tabbar': '/static/vant/tabbar/index',
+      'van-tabbar-item': '/static/vant/tabbar-item/index'
     }
   }
 }

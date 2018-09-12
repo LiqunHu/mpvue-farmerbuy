@@ -43,6 +43,7 @@ export default {
       try {
         let response = await _self.$http.post(apiUrl + 'getGoodsList', {})
         _self.showlists = response.info.data
+        console.log(_self.showlists)
       } catch (error) {
         console.error(error)
       }

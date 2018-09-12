@@ -36,6 +36,12 @@ export default {
           selectedIconPath: 'static/images/home-actived.png'
         },
         {
+          text: '购物车',
+          pagePath: 'pages/home/main',
+          iconPath: 'static/images/shoppingcart.png',
+          selectedIconPath: 'static/images/shoppingcart-actived.png'
+        },
+        {
           text: '我的',
           pagePath: 'pages/profile/main',
           iconPath: 'static/images/profile.png',

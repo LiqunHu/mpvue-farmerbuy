@@ -27,6 +27,7 @@ export default {
   methods: {
   },
   created() {
+    wx.setTabBarBadge({ index: 1, text: '0' })
   }
 }
 </script>
