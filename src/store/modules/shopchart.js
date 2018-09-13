@@ -37,7 +37,7 @@ const mutations = {
       }
     }
     if (i === state.goods.length) {
-      item.count = 0
+      item.count = 1
       state.goods.push(item)
     }
     reCalc()

@@ -1,46 +1,31 @@
 <template>
   <div>
-    <van-checkbox-group class="card-goods" v-model="checkedGoods">
-      <van-checkbox
-        class="card-goods__item"
-        v-for="item in goods"
-        :key="item.id"
-        :name="item.id"
-      >
-        <van-card
-          :title="item.title"
-          :desc="item.desc"
-          :num="item.num"
-          :price="formatPrice(item.price)"
-          :thumb="item.thumb"
-        />
-      </van-checkbox>
-    </van-checkbox-group>
+    <view class="van-hairline--bottom" v-for="item in goods" :key="item.goodId">
+      <wux-card title="卡片标题" extra="额外内容">
+        <view slot="body">卡片内容</view>
+        <view slot="footer">尾部内容</view>
+      </wux-card>
+    </view>
   </div>
 </template>
 
 <script>
-import Homeheader from '@/components/home/Homeheader'
-import Homeswiper from '@/components/home/Homeswiper'
-import Homeshowlist from '@/components/home/Homeshowlist'
-// const apiUrl = '/api/farmerbuy/farmerbuyMPControl?method='
-// import Notify from '@/../static/vant/notify/notify'
-
+import { mapState } from 'vuex'
 export default {
+  computed: {
+    ...mapState('shopchart', {
+      total: state => state.total,
+      totalcount: state => state.totalcount,
+      goods: state => state.goods
+    })
+  },
   data() {
     return {
-      showlists: []
     }
-  },
-  components: {
-    Homeheader,
-    Homeswiper,
-    Homeshowlist
   },
   methods: {
   },
   created() {
-    wx.setTabBarBadge({ index: 1, text: '0' })
   }
 }
 </script>

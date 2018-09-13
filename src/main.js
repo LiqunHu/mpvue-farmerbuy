@@ -15,7 +15,7 @@ export default {
   config: {
     // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
     // pages: ['pages/logs/main', '^pages/index/main' , 'pages/loginroute/main', 'pages/wxreg/main', 'pages/detail/main'],
-    pages: ['^pages/home/main', 'pages/detail/main', 'pages/profile/main'],
+    pages: ['^pages/home/main', 'pages/detail/main', 'pages/shopcart/main', 'pages/profile/main'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#01aee3',
@@ -37,7 +37,7 @@ export default {
         },
         {
           text: '购物车',
-          pagePath: 'pages/home/main',
+          pagePath: 'pages/shopcart/main',
           iconPath: 'static/images/shoppingcart.png',
           selectedIconPath: 'static/images/shoppingcart-actived.png'
         },

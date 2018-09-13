@@ -1,6 +1,6 @@
 <template>
   <scroll-view scroll-y :style="'height:'+ scrollHeight">
-    <view class="van-hairline--bottom" v-for="item in showlists" :key="item.id">
+    <view class="van-hairline--bottom" v-for="item in showlists" :key="item.goodId">
       <van-card
         :title="item.showName"
         :desc="item.desc"
@@ -47,7 +47,6 @@ export default {
       try {
         let response = await _self.$http.post(apiUrl + 'getGoodsList', {})
         _self.showlists = response.info.data
-        console.log(_self.showlists)
       } catch (error) {
         console.error(error)
       }
