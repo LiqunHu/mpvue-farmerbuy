@@ -13,10 +13,8 @@ export default {
     navigationBarTitleText: '购物车',
     usingComponents: {
       'van-button': '/static/vant/button/index',
-      'van-notify': '/static/vant/notify/index',
-      'van-tabbar': '/static/vant/tabbar/index',
-      'van-tabbar-item': '/static/vant/tabbar-item/index',
-      'van-card': '/static/vant/card/index'
+      'van-card': '/static/vant/card/index',
+      'van-stepper': '/static/vant//stepper/index'
     }
   }
 }

@@ -1,10 +1,15 @@
 <template>
   <div>
     <view class="van-hairline--bottom" v-for="item in goods" :key="item.goodId">
-      <wux-card title="卡片标题" extra="额外内容">
-        <view slot="body">卡片内容</view>
-        <view slot="footer">尾部内容</view>
-      </wux-card>
+      <van-card
+        :title="item.showName"
+        :desc="item.desc"
+        :price="item.price"
+        :thumb="'https://gw.alicdn.com/' + item.url">
+        <view slot="footer">
+          <van-stepper :value="item.count"/>
+        </view>
+      </van-card>
     </view>
   </div>
 </template>
