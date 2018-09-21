@@ -11,6 +11,7 @@
         </view>
       </van-card>
     </view>
+    
   </div>
 </template>
 

@@ -14,7 +14,8 @@ export default {
     usingComponents: {
       'van-button': '/static/vant/button/index',
       'van-card': '/static/vant/card/index',
-      'van-stepper': '/static/vant//stepper/index'
+      'van-stepper': '/static/vant//stepper/index',
+      
     }
   }
 }
