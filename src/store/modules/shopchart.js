@@ -1,7 +1,8 @@
 import {
   CHART_ADD,
   CHART_REMOVE,
-  CHART_CLEAR
+  CHART_CLEAR,
+  CHART_SETITEMCOUNT
 } from '@/store/mutations-type'
 
 const state = {
@@ -60,6 +61,21 @@ const mutations = {
       index: 1,
       text: '0'
     })
+  },
+  [CHART_SETITEMCOUNT]: (state, {
+    item,
+    itemcount
+  }) => {
+    for (let i = 0; i < state.goods.length; i++) {
+      if (state.goods[i].goodId === item.goodId) {
+        if (parseInt(itemcount) === 0) {
+          state.goods.splice(i, 1)
+        } else {
+          state.goods[i].count = parseInt(itemcount)
+        }
+      }
+    }
+    reCalc()
   }
 }
 
@@ -89,6 +105,18 @@ const actions = {
     commit
   }) {
     commit(CHART_CLEAR)
+  },
+  async setItemCount({
+    state,
+    commit
+  }, {
+    item,
+    itemcount
+  }) {
+    commit(CHART_SETITEMCOUNT, {
+      item: item,
+      itemcount: itemcount
+    })
   }
 }
 

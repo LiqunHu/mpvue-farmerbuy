@@ -4,3 +4,4 @@ export const ACCESS_LOGOUT = 'ACCESS_LOGOUT' // 登出
 export const CHART_ADD = 'CHART_ADD' // 增加购物车
 export const CHART_REMOVE = 'CHART_REMOVE' // 增加购物车
 export const CHART_CLEAR = 'CHART_CLEAR' // 清空购物车
+export const CHART_SETITEMCOUNT = 'CHART_SETITEMCOUNT' // 设置货品数量
