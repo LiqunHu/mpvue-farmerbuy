@@ -27,27 +27,27 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState } from 'vuex'
 export default {
   computed: {
-    ...mapState("shopchart", {
+    ...mapState('shopchart', {
       total: state => state.total,
       totalcount: state => state.totalcount,
       goods: state => state.goods
     })
   },
   data() {
-    return {};
+    return {}
   },
   methods: {
-    ...mapActions("shopchart", ["setItemCount"]),
+    ...mapActions('shopchart', ['setItemCount']),
     changeItemCount(item, e) {
-      let _self = this;
-      _self.setItemCount({ item: item, itemcount: e.mp.detail });
+      let _self = this
+      _self.setItemCount({ item: item, itemcount: e.mp.detail })
     }
   },
   created() {}
-};
+}
 </script>
 <style scoped>
 .van-submit-bar {
