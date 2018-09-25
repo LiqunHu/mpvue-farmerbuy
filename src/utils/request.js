@@ -4,8 +4,8 @@ import Fly from 'flyio'
 const request = new Fly()
 
 request.config.timeout = 10 * 1000
-request.config.baseURL = 'http://localhost:9093'
-// request.config.baseURL = 'http://120.24.236.69:9093'
+// request.config.baseURL = 'http://localhost:9093'
+request.config.baseURL = 'http://120.24.236.69:9093'
 // if (process.env.METHOD === 'local') {
 //   request.config.baseURL = 'http://localhost:9090'
 // }
