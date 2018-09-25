@@ -10,9 +10,9 @@
           <view class="view-block">
             <van-stepper :value="item.count" @change="changeItemCount(item, $event)"/>
           </view>
-          <view>
-            <van-icon name="delete" size="20px"/>
-          </view>
+          <van-row>
+            <van-col offset="19" span="5"><van-icon name="delete" size="15px" @click="deleteItem(item)"/></van-col>
+          </van-row>
         </view>
       </van-card>
     </view>
@@ -40,10 +40,14 @@ export default {
     return {}
   },
   methods: {
-    ...mapActions('shopchart', ['setItemCount']),
+    ...mapActions('shopchart', ['setItemCount', 'removeitem']),
     changeItemCount(item, e) {
       let _self = this
       _self.setItemCount({ item: item, itemcount: e.mp.detail })
+    },
+    deleteItem(item) {
+      let _self = this
+      _self.removeitem({ item: item })
     }
   },
   created() {}
