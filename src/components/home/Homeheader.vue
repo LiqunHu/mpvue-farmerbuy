@@ -1,8 +1,8 @@
 <template>
-  <div class="header" id="homeheader">
+  <view class="header" id="homeheader" @click="scanCode()">
     <image class="scan-icon" mode="aspectFit" src="/static/images/scan.png"/>
     <text class="scan-text">扫描</text>
-	</div>
+	</view>
 </template>
 <script>
 export default {
@@ -14,6 +14,15 @@ export default {
   onLoad() {
   },
   methods: {
+    scanCode() {
+      // let _self = this
+      wx.scanCode({
+        scanType: ['qrCode'],
+        success: async function (res) {
+          console.log(res)
+        }
+      })
+    }
   }
 }
 </script>
