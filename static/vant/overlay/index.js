@@ -1,5 +1,4 @@
 import { VantComponent } from '../common/component';
-
 VantComponent({
   props: {
     show: Boolean,
@@ -10,13 +9,11 @@ VantComponent({
       value: 1
     }
   },
-
   methods: {
-    onClick() {
+    onClick: function onClick() {
       this.$emit('click');
     },
-
     // for prevent touchmove
-    noop() {}
+    noop: function noop() {}
   }
 });

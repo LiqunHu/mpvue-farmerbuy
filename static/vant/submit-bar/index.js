@@ -1,12 +1,6 @@
 import { VantComponent } from '../common/component';
-
 VantComponent({
-  classes: [
-    'bar-class',
-    'price-class',
-    'button-class'
-  ],
-
+  classes: ['bar-class', 'price-class', 'button-class'],
   props: {
     tip: [String, Boolean],
     type: Number,
@@ -24,24 +18,20 @@ VantComponent({
       value: 'danger'
     }
   },
-
   computed: {
-    hasPrice() {
+    hasPrice: function hasPrice() {
       return typeof this.data.price === 'number';
     },
-
-    priceStr() {
+    priceStr: function priceStr() {
       return (this.data.price / 100).toFixed(2);
     },
-
-    tipStr() {
-      const { tip } = this.data;
+    tipStr: function tipStr() {
+      var tip = this.data.tip;
       return typeof tip === 'string' ? tip : '';
     }
   },
-
   methods: {
-    onSubmit(event) {
+    onSubmit: function onSubmit(event) {
       this.$emit('submit', event.detail);
     }
   }

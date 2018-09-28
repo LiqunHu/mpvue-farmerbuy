@@ -1,5 +1,4 @@
 import { VantComponent } from '../common/component';
-
 VantComponent({
   props: {
     show: Boolean,
@@ -23,15 +22,13 @@ VantComponent({
       value: 'middle'
     }
   },
-
   methods: {
-    clear() {
+    clear: function clear() {
       this.setData({
         show: false
       });
     },
-
     // for prevent touchmove
-    noop() {}
+    noop: function noop() {}
   }
 });

@@ -1,9 +1,7 @@
 import { VantComponent } from '../common/component';
 import { transition } from '../mixins/transition';
-
 VantComponent({
   mixins: [transition(false)],
-
   props: {
     transition: String,
     customStyle: String,
@@ -25,9 +23,8 @@ VantComponent({
       value: 'center'
     }
   },
-
   methods: {
-    onClickOverlay() {
+    onClickOverlay: function onClickOverlay() {
       this.$emit('click-overlay');
 
       if (this.data.closeOnClickOverlay) {

@@ -1,37 +1,38 @@
 import { VantComponent } from '../common/component';
-
 VantComponent({
-  relations: {
-    '../radio/index': {
-      type: 'descendant',
-      linked(target) {
-        const { value, disabled } = this.data;
-        target.setData({
-          value: value,
-          disabled: disabled || target.data.disabled
-        });
-      }
+  relation: {
+    name: 'radio',
+    type: 'descendant',
+    linked: function linked(target) {
+      var _this$data = this.data,
+          value = _this$data.value,
+          disabled = _this$data.disabled;
+      target.setData({
+        value: value,
+        disabled: disabled || target.data.disabled
+      });
     }
   },
-
   props: {
-    value: {
-      type: null,
-      observer(value) {
-        const children = this.getRelationNodes('../radio/index');
-        children.forEach(child => {
-          child.setData({ value });
+    value: null,
+    disabled: Boolean
+  },
+  watch: {
+    value: function value(_value) {
+      var children = this.getRelationNodes('../radio/index');
+      children.forEach(function (child) {
+        child.setData({
+          value: _value
         });
-      }
+      });
     },
-    disabled: {
-      type: Boolean,
-      observer(disabled) {
-        const children = this.getRelationNodes('../radio/index');
-        children.forEach(child => {
-          child.setData({ disabled: disabled || children.data.disabled });
+    disabled: function disabled(_disabled) {
+      var children = this.getRelationNodes('../radio/index');
+      children.forEach(function (child) {
+        child.setData({
+          disabled: _disabled || child.data.disabled
         });
-      }
+      });
     }
   }
 });

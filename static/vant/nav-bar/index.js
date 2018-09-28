@@ -1,8 +1,6 @@
 import { VantComponent } from '../common/component';
-
 VantComponent({
   classes: ['title-class'],
-
   props: {
     title: String,
     leftText: String,
@@ -14,13 +12,11 @@ VantComponent({
       value: 1
     }
   },
-
   methods: {
-    onClickLeft() {
+    onClickLeft: function onClickLeft() {
       this.$emit('click-left');
     },
-
-    onClickRight() {
+    onClickRight: function onClickRight() {
       this.$emit('click-right');
     }
   }
